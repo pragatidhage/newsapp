@@ -3,16 +3,7 @@ import NewsItem from './NewsItem'
 
 export class News extends Component {
   articles = [
-    {
-      "source": { "id": "google-news-in", "name": "Google News (India)" },
-      "author": "India Today",
-      "title": "Mamata Banerjee says no alliance with Congress Bengal Lok Sabha election 2024 - India Today",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMinQFodHRwczovL3d3dy5pbmRpYXRvZGF5LmluL2VsZWN0aW9ucy9zdG9yeS9tYW1hdGEtYmFuZXJqZWUtdG1jLWNvbmdyZXNzLWFsbGlhbmNlLWFkaGlyLXJhbmphbi1jaG93ZGh1cnktd2VzdC1iZW5nYWwtbG9rLXNhYmhhLWVsZWN0aW9uLTIwMjQtMjQ5MzAzMi0yMDI0LTAxLTI00gEA?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2024-01-24T13:52:16+00:00",
-      "content": null
-    },
+
     {
       "source": { "id": "bbc-sport", "name": "BBC Sport" },
       "author": null,
@@ -24,16 +15,6 @@ export class News extends Component {
       "content": "Spinner Shoaib Bashir has been granted an Indian visa and could be back with the England Test squad by the weekend.\r\nThe 20-year-old, who is of Pakistani heritage, was initially left in Abu Dhabi whe… [+2136 chars]"
     },
     {
-      "source": { "id": "google-news-in", "name": "Google News (India)" },
-      "author": "Bar & Bench - Indian Legal News",
-      "title": "Delhi High Court orders Google to suspend URLs of forms posted by Starbucks franchisee impersonators - Bar & Bench - Indian Legal News",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiaGh0dHBzOi8vd3d3LmJhcmFuZGJlbmNoLmNvbS9uZXdzL2RlbGhpLWhpZ2gtY291cnQtZ29vZ2xlLXN1c3BlbmQtdXJscy1zdGFyYnVja3MtZnJhbmNoaXNlZS1pbXBlcnNvbmF0b3Jz0gFyaHR0cHM6Ly93d3cuYmFyYW5kYmVuY2guY29tL2FtcC9zdG9yeS9uZXdzL2RlbGhpLWhpZ2gtY291cnQtZ29vZ2xlLXN1c3BlbmQtdXJscy1zdGFyYnVja3MtZnJhbmNoaXNlZS1pbXBlcnNvbmF0b3Jz?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2024-01-24T07:08:04+00:00",
-      "content": null
-    },
-    {
       "source": { "id": "al-jazeera-english", "name": "Al Jazeera English" },
       "author": "Arbab Ali, Rifat Fareed",
       "title": "Undeterred by Gaza war, thousands of Indians turn up for jobs in Israel",
@@ -42,16 +23,6 @@ export class News extends Component {
       "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2024/01/image-1706076170.jpg?resize=1920%2C1080&quality=80",
       "publishedAt": "2024-01-24T06:22:17Z",
       "content": "Rohtak, Haryana Its a frigid January morning and the sun has not risen yet.\r\nA shivering Pramod Sharma queues up outside the main entrance of Maharshi Dayanand University (MDU) campus in Rohtak, a sm… [+11759 chars]"
-    },
-    {
-      "source": { "id": "google-news-in", "name": "Google News (India)" },
-      "author": "The Indian Express",
-      "title": "Assam Rifles jawan fires at six colleagues before shooting himself dead in Manipur - The Indian Express",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiVGh0dHBzOi8vaW5kaWFuZXhwcmVzcy5jb20vYXJ0aWNsZS9pbmRpYS9hc3NhbS1yaWZsZXMtamF3YW4tc2hvb3RpbmctbWFuaXB1ci05MTI1MTMzL9IBWWh0dHBzOi8vaW5kaWFuZXhwcmVzcy5jb20vYXJ0aWNsZS9pbmRpYS9hc3NhbS1yaWZsZXMtamF3YW4tc2hvb3RpbmctbWFuaXB1ci05MTI1MTMzL2xpdGUv?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2024-01-24T05:41:46+00:00",
-      "content": null
     },
     {
       "source": { "id": "al-jazeera-english", "name": "Al Jazeera English" },
@@ -177,7 +148,6 @@ export class News extends Component {
   constructor() {
     
     super();
-    console.log("hello i m a constructor from news component")
     this.state ={
       articles : this.articles,
       loading : false
@@ -187,19 +157,14 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h2>NewSapp - Top Headlines</h2>
+       
         <div className="row">
-          <div className="col-md-4">
-            <NewsItem title='myTitle' description='myDesc' imgUrl="https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/11787/production/_124395517_bbcbreakingnewsgraphic.jpg"/>
-          </div>
-          <div className="col-md-4">
-            <NewsItem title='myTitle' description='myDesc' imgUrl="https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/11787/production/_124395517_bbcbreakingnewsgraphic.jpg"/>
-          </div>
-          <div className="col-md-4">
-            <NewsItem title='myTitle' description='myDesc' imgUrl="https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/11787/production/_124395517_bbcbreakingnewsgraphic.jpg"/>
-          </div>
-        </div>
-        
-        
+          {this.state.articles.map((element)=>{
+            return  <div className="col-md-4" key={element.url}>
+            <NewsItem  title={element.title.slice(0,45)} description={element.description.slice(0,88)} imgUrl={element.urlToImage} newsUrl={element.url}/>
+            </div>
+          })}
+        </div>   
       </div>
     )
   }
