@@ -6,10 +6,10 @@ export class NewsItem extends Component {
     //destructuring props will load and will return title and description
     let {title,description,imgUrl,newsUrl} = this.props;
     return (
-      <div className='my-3'>
+      <div className='my-3' >
         <div className="card" >
           <img src={!imgUrl?"https://www.livemint.com/lm-img/img/2024/01/25/1600x900/narendra_modi_1706149904523_1706149904988.jpg":imgUrl} 
-          style={{height:"165px",objectFit:"cover"}} className="card-img-top" alt="..."/>
+           className="card-img-top" alt="..."/>
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>

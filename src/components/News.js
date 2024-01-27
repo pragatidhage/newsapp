@@ -71,7 +71,7 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <strong><h1 className='text-center'  style={{margin: '25px 0px'}} >NewSapp - Top Headlines</h1></strong>
-       { this.state.loading && <Spinner/>}
+       { this.state.loading && <Spinner/>} 
         <div className="row">
           {!this.state.loading && this.state.articles.map((element)=>{
             return  <div className="col-md-4" key={element.url}>
