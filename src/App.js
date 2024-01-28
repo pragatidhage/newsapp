@@ -4,30 +4,35 @@ import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
   pageSize = 12;
+
+  state = {
+    progress : 0
+  }
+  setProgress=(progress)=>{
+    this.setState({progress:progress})
+  }
+
   render() {
     return (
       <div>
         <Router>
           <Navbar />
-
+          <LoadingBar
+            height={3}
+            color='#f11946'
+            progress={this.state.progress}
+            
+      />
           <Routes>
-            {/* <Route path="/"><News key="" pageSize={this.pageSize} country="in" category="general"/></Route>
-          <Route path="/business"><News key="" pageSize={this.pageSize} country="in" category="business"/></Route>
-          <Route path="/entertainment"><News key="" pageSize={this.pageSize} country="in" category="entertainment"/></Route>
-          <Route path="/general"><News key="" pageSize={this.pageSize} country="in" category="general"/></Route>
-          <Route path="/health"><News key="" pageSize={this.pageSize} country="in" category="health"/></Route>
-          <Route path="/science"><News key="" pageSize={this.pageSize} country="in" category="science"/></Route>
-          <Route path="/sports"><News key="" pageSize={this.pageSize} country="in" category="sports"/></Route>
-          <Route path="/technology"><News key="" pageSize={this.pageSize} country="in" category="technology"/></Route> */}
-
             <Route
               exact
               path="/"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="general"
                   pageSize={this.pageSize}
                   country="in"
@@ -39,7 +44,7 @@ export default class App extends Component {
               exact
               path="/business"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="business"
                   pageSize={this.pageSize}
                   country="in"
@@ -51,7 +56,7 @@ export default class App extends Component {
               exact
               path="/entertainment"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="entertainment"
                   pageSize={this.pageSize}
                   country="in"
@@ -63,7 +68,7 @@ export default class App extends Component {
               exact
               path="/general"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="general"
                   pageSize={this.pageSize}
                   country="in"
@@ -75,7 +80,7 @@ export default class App extends Component {
               exact
               path="/health"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="health"
                   pageSize={this.pageSize}
                   country="in"
@@ -87,7 +92,7 @@ export default class App extends Component {
               exact
               path="/science"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="science"
                   pageSize={this.pageSize}
                   country="in"
@@ -99,7 +104,7 @@ export default class App extends Component {
               exact
               path="/sports"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="sports"
                   pageSize={this.pageSize}
                   country="in"
@@ -111,7 +116,7 @@ export default class App extends Component {
               exact
               path="/technology"
               element={
-                <News
+                <News setProgress={this.setProgress} 
                   key="technology"
                   pageSize={this.pageSize}
                   country="in"
